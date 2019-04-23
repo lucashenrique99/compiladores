@@ -1,0 +1,41 @@
+{
+  "name": "Influenzer Chatbot",
+  "short_name": "Chatbot",
+  "theme_color": "#a143d8",
+  "background_color": "#a143d8",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "assets/icons/logo-menu-128x34.png",
+      "sizes": "128x34",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/logo-menu-144x38.png",
+      "sizes": "144x38",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/logo-menu-152x40.png",
+      "sizes": "152x40",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/logo-menu-192x50.png",
+      "sizes": "192x50",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/logo-menu-384x107.png",
+      "sizes": "384x107",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/logo-menu-512x143.png",
+      "sizes": "512x143",
+      "type": "image/png"
+    }
+  ]
+}

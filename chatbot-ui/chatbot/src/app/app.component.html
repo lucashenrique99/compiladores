@@ -1,0 +1,86 @@
+<div class="p-grid ui-fluid p-justify-center p-align-center">
+  <div id="chat" class="p-col-12 p-sm-10 p-md-8">
+    <p-card>
+      <p-header>
+        <div class="p-grid">
+          <div class="p-col-12">
+            <div id="logo" class="p-grid p-justify-center">
+              <div class="p-col-align-center">
+                <img src="assets/logo-menu.png" alt="logo">
+              </div>
+            </div>
+          </div>
+
+          <div class="p-col-12">
+            <div class="p-grid">
+              <div id="foto-robo" class="p-col-4 p-col-align-center">
+                <div class="p-grid p-align-center">
+                  <div class="p-col-6">
+                    <img src="assets/robotic.png" alt="logo">
+                  </div>
+                  <div style="font-weight: 1000" class="p-col-6">
+                    <div class="p-grid p-align-center">
+                      <div style="font-size: 20px" class="p-col-12">
+                        Cefebot
+                      </div>
+                      <div style="font-size: 10px; margin: -12px 0px 0px 6px" class="p-col-12">
+                        <span>{{ (isDigitando)? 'Digitando...' : 'Online' }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </p-header>
+
+      <div class="p-grid ui-fluid">
+        <div id="conversa" class="p-col-12">
+          <p-scrollPanel #scroll [style]="{width: '100%', 'height': '300px'}" styleClass="scrollPanel">
+            
+            <div class="p-grid ui-fluid">
+              <ng-template ngFor let-i="index" let-mensagem [ngForOf]="conversa">
+                <div class="p-col-12 mensagem">
+                  <div *ngIf="mensagem.autor != 'bot'" style="margin-right: 1px" class="p-grid ui-fluid p-justify-end">
+                    <div [id]="i" class="p-col-12 p-sm-10 p-md-8 p-lg-6">
+                      <p-card [style]="{'background': '#efccff'}">
+                        <span>{{mensagem.conteudo}}</span>
+                      </p-card>
+                    </div>
+                  </div>
+                  <div *ngIf="mensagem.autor == 'bot'"  style="margin-right: 1px" class="p-grid ui-fluid">
+                    <div [id]="i" class="p-col-12 p-sm-10 p-md-8 p-lg-6">
+                      <p-card [style]="{'background': '#d987ff'}">
+                        <span>{{mensagem.conteudo}}</span>
+                      </p-card>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+
+          </p-scrollPanel>
+        </div>
+        <div id="formulario" class="p-col-12">
+
+          <form #form="ngForm" (ngSubmit)="enviarMensagem(form, scroll)">
+
+            <div style="margin-top: 5px" class="p-grid p-justify-between ui-fluid">
+              <div class="p-col-10 p-sm-11 p-col-align-end">
+                  <!-- <input placeholder="Digite uma mensagem" [required]="true" ngModel name="mensagem" type="text" pInputText /> -->
+                <textarea (keyup.enter)="enviarMensagem(form, scroll)" placeholder="Digite uma mensagem" [rows]="1" [autoResize]="true" [required]="true" ngModel name="mensagem" pInputTextarea></textarea>
+              </div>
+              <div class="p-col-2 p-sm-1 p-col-align-center">
+                <button [disabled]="form.status != 'VALID'" pButton type="submit" icon="fas fa-arrow-right"
+                  class="ui-button-rounded ui-button-success"></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </p-card>
+
+  </div>
+</div>

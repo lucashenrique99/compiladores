@@ -1,0 +1,82 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+    background: linear-gradient( to right, #ba5cf2, #871bc6);
+}
+
+@media(	min-width: 576px){
+    body #chat{
+        height: auto;
+        margin-top: 50px;
+    }
+}
+
+.ui-card .ui-card-header #logo{
+    background: linear-gradient( to left, #ba5cf2, #871bc6);
+    width: inherit;
+    margin-left: 0.1px;
+    border-radius: 3px 3px 0px 0px;
+}
+
+.ui-card .ui-card-header{
+    background-color: rgb(237, 237, 243);
+    border-radius: 3px 3px 0px 0px;
+}
+
+/* .ui-card .ui-card-header #foto-robo{
+    background-color: white;
+    border-radius: 50%;
+    
+} */
+
+.ui-card .ui-card-header #foto-robo img{
+    width: 40px;
+    background-color: white;
+    border-radius: 50%;
+    margin-left: 20px
+}
+
+.ui-card .ui-card-header #foto-robo{
+   height: 50px;
+}
+
+.mensagem{
+    padding-top: 0.2px;
+    padding-bottom: 0.2px;
+}
+
+body #formulario{
+    background: rgb(237, 237, 243);
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+body #formulario textarea{
+    border-radius: 20px;
+    padding: 5px 15px;
+    min-height: 30px;
+}
+
+body #logo img {
+    padding-top: 20px; 
+    width: 60%
+}
+
+.scrollPanel .ui-scrollpanel-wrapper {
+    border-right: 9px solid #f4f4f4;
+}
+    
+.scrollPanel .ui-scrollpanel-bar {
+    background-color: #871bc6;
+    opacity: 1;
+    transition: background-color .3s;
+}
+    
+.scrollPanel .ui-scrollpanel-bar:hover {
+    background-color: #560286;
+}
