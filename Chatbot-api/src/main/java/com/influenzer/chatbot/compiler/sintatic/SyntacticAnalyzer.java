@@ -19,8 +19,8 @@ public class SyntacticAnalyzer {
 
         SyntacticObject object = new SyntacticObject();
 
-        if (tokens.stream().anyMatch(p -> p.contains("?"))) {
-            object.setIsCorrect(Boolean.TRUE);
+        if (tokens.get(0).contains("com")) {
+            object.setIsCorrect(tokens.stream().anyMatch(p -> p.contains("?")));
             object.setType(MessageType.QUESTION_RULE_1);
 
         } else if (tokens.get(0).contains("gost")) {
@@ -107,19 +107,32 @@ public class SyntacticAnalyzer {
 
 }
 
-//Gramática formal:
-//
-//Pgt ::= <expressao> ?
-//Pgt ::= Gostaria <expressao>
-//Pgt ::= Preciso <expressao>
-//
-//Attr ::= <substantivo> é <adjetivo>
-//Attr ::= <adjetivo>
-//Attr ::= Sim
-//Attr ::= Não
-//Attr ::= <substantivo> está <adjetivo>
-//Attr ::= está <adjetivo>
-//
-//<substantivo> ::= ainda não definido
-//<expressao> ::= ainda não definido
-//<adjetivo> ::= ainda não definido
+/*
+
+Gramática formal:
+
+Pgt ::= Como <expressao> ?
+Pgt ::= Gostaria <expressao>
+Pgt ::= Preciso <expressao>
+
+Attr ::= <substantivo> é <adjetivo>
+Attr ::= <adjetivo>
+Attr ::= Sim
+Attr ::= Não
+Attr ::= <substantivo> está <adjetivo>
+Attr ::= está <adjetivo>
+
+<substantivo> ::= ainda não definido
+<expressao> ::= ainda não definido
+<adjetivo> ::= ainda não definido
+
+<servico> ::= Consertar | Instalar | Saber | Descobrir | Verificar
+
+<defeito> :: não <Tipo-Defeito>
+<Tipo-Defeito> ::= Liga | Funciona | Inicializa | Acende | Executa
+
+<Informacao-Pessoal> ::= CPF | CNPJ | DATA COMPRA
+
+<Equipamento> ::= COMPUTADOR | NOTEBOOK | CELULAR | IMPRESSORA | MOUSE | MONITOR | TELA
+ 
+*/

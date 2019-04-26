@@ -57,7 +57,7 @@ public class LexiconAnalyzer {
     }
 
     private List<String> symbolsTableGenerate(List<String> list) {
-        List<String> keywords = Arrays.asList("gost", "precis", "e", "sim", "nao", "esta", "?");
+        List<String> keywords = Arrays.asList("com", "gost", "precis", "e", "sim", "nao", "esta", "?");
 
         return list.stream()
                 .filter(p -> !keywords.contains(p))
@@ -463,8 +463,8 @@ class Stopwords {
             "ate",
             "boa",
             "bom",
-            "com",
-            "como",
+//            "com",
+//            "como",
             "da",
             "das",
             "de",

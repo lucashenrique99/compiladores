@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ScrollPanel } from 'primeng/scrollpanel';
 import { MensagemService } from './mensagem.service';
@@ -9,7 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   isDigitando: boolean;
   conversa: Mensagem[];
@@ -18,6 +18,11 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.conversa = [];
+    this.mensagemService.iniciarConexao();
+  }
+
+  ngOnDestroy() {
+    this.mensagemService.encerrarConexao().subscribe();
   }
 
   ngAfterViewInit(){
@@ -35,7 +40,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         (resposta: any) => {
           setTimeout(()=>{ // simular digitação
             this.isDigitando = false;
-            this.adicionarMensagem('bot', resposta.mensagem, scrollPanel);
+            this.adicionarMensagem('bot', resposta.response, scrollPanel);
 
           }, 500)
         },
