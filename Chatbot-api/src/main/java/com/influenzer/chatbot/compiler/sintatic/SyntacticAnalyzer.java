@@ -3,7 +3,6 @@ package com.influenzer.chatbot.compiler.sintatic;
 import com.influenzer.chatbot.compiler.model.MessageType;
 import com.influenzer.chatbot.compiler.model.SymbolObject;
 import com.influenzer.chatbot.compiler.model.SymbolType;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -18,14 +17,14 @@ Pgt ::= Como <servico> <software> ? | Como <servico> <equipamento> ?
 Pgt ::= Gostaria <expressao>
 Pgt ::= Preciso <expressao>
 
-Attr ::= <substantivo> é <modelo> | <substantivo> esta <modelo> | <categoria-informacao> é <informacao>
+Attr ::= <substantivo> é <modelo> | <substantivo> esta <modelo> | <categoria-informacao> é <informacao> | <equipamento> e <fabricante> | <software> e <fabricante>
 Attr ::= <defeito>
 Attr ::= Sim
 Attr ::= Não
 Attr ::= <substantivo> <defeito>
 Attr ::= está com <tipo-defeito>
 
-<substantivo> ::= <equipamento> | <software>
+<substantivo> ::= <equipamento> | <software> | <fabricante>
 <expressao> ::= <servico> <equipamento> | <servico> <software> | <equipamento> <defeito>
 <adjetivo> ::= <defeito> | <informacao>
 
@@ -37,6 +36,7 @@ Attr ::= está com <tipo-defeito>
 <categoria-informacao> ::= cpf | cnpj | pedido
 <informacao> ::= CPF | CNPJ | DATA COMPRA
 
+<fabricante> ::= DELL | APPLE | MICROSOFT | LENOVO | LG | GOOGLE
 <software> ::= DRIVER | PROGRAMA | WINDOWS | MACOS | LINUX | UBUNTU
 <modelo> ::= BRANCO | PRETO | CINZA | VERMELHO | NUMERO | WINDOWS | MACOS | LINUX | UBUNTU
 <equipamento> ::= COMPUTADOR | NOTEBOOK | CELULAR | IMPRESSORA | MOUSE | MONITOR | TELA
@@ -51,6 +51,7 @@ public class SyntacticAnalyzer {
     private final List<String> bugTypes = Arrays.asList("lig", "funcion", "inicializ", "acend", "execut", "problem");
     private final List<String> models = Arrays.asList("branc", "pret", "cinz", "vermelh", "verd", "azul", "windows", "macos", "linux", "ubuntu");
     private final List<String> informationCategory = Arrays.asList("cpf", "cnpj", "pedido");
+    private final List<String> manufacturers = Arrays.asList("dell", "apple", "microsoft", "lenovo", "lg", "google");
 
     public Optional<SyntacticObject> start(List<String> tokens) throws SyntaticException {
         if (tokens == null || tokens.isEmpty()) {
@@ -189,30 +190,38 @@ public class SyntacticAnalyzer {
             }
 
             if (tokens.size() >= 2
-                    && (tokens.get(1).equalsIgnoreCase("e") || tokens.get(1).equalsIgnoreCase("esta") )
-                    && (this.equipments.contains(tokens.get(0)) || this.softwares.contains(tokens.get(0)) || this.informationCategory.contains(tokens.get(0)))) { // assignment - rule 1
+                    && (tokens.get(1).equalsIgnoreCase("e") || tokens.get(1).equalsIgnoreCase("esta"))
+                    && (this.equipments.contains(tokens.get(0)) || this.softwares.contains(tokens.get(0)) || this.manufacturers.contains(tokens.get(0)) || this.informationCategory.contains(tokens.get(0)))) { // assignment - rule 1
 
                 if (tokens.size() < 3) {
-                    throw new SyntaticException("Informação, equipamento ou modelo esperado", MessageType.ASSIGNMENT_RULE_1);
+                    throw new SyntaticException("Informação, equipamento, fabricante ou modelo esperado", MessageType.ASSIGNMENT_RULE_1);
                 }
 
                 int index = 1;
 
                 while (index < tokens.size()) {
 
-                    if (tokens.get(index).length() == 11 // cpf
+                    if (this.informationCategory.contains(tokens.get(0)) && (tokens.get(index).length() == 11 // cpf
                             || tokens.get(index).length() == 14 // cnpj
                             || tokens.get(index).contains("/") // data
-                            || tokens.get(index).contains(".")) {
+                            || tokens.get(index).contains("."))) {
 
                         object.setType(MessageType.ASSIGNMENT_RULE_1);
                         object.getSymbols().add(new SymbolObject(SymbolType.INFORMATION, tokens.get(0), tokens.get(index)));
                         return Optional.of(object);
                     }
 
-                    if (this.models.contains(tokens.get(index))) {
+                    if (this.equipments.contains(tokens.get(0)) || this.softwares.contains(tokens.get(0)) || this.manufacturers.contains(tokens.get(0))
+                            && (this.models.contains(tokens.get(index)))) {
                         object.setType(MessageType.ASSIGNMENT_RULE_1);
                         object.getSymbols().add(new SymbolObject(SymbolType.MODEL, tokens.get(0), tokens.get(index)));
+                        return Optional.of(object);
+                    }
+
+                    if (this.equipments.contains(tokens.get(0)) || this.softwares.contains(tokens.get(0))
+                            && this.manufacturers.contains(tokens.get(index))) {
+                        object.setType(MessageType.ASSIGNMENT_RULE_1);
+                        object.getSymbols().add(new SymbolObject(SymbolType.MANUFACTURER, tokens.get(0), tokens.get(index)));
                         return Optional.of(object);
                     }
 
@@ -226,11 +235,11 @@ public class SyntacticAnalyzer {
                     || (tokens.size() >= 2 && tokens.get(0).equalsIgnoreCase("nao") && this.bugTypes.contains(tokens.get(1)))) { // defeito
 
                 object.setType(MessageType.ASSIGNMENT_RULE_2);
-                object.getSymbols().add(new SymbolObject(SymbolType.INFORMATION, SymbolType.INFORMATION.toString() , (tokens.size() == 1) ? tokens.get(0) : tokens.get(1)));
+                object.getSymbols().add(new SymbolObject(SymbolType.INFORMATION, SymbolType.INFORMATION.toString(), (tokens.size() == 1) ? tokens.get(0) : tokens.get(1)));
                 return Optional.of(object);
             }
 
-            if (this.equipments.contains(tokens.get(0)) || this.softwares.contains(tokens.get(0))) {
+            if (this.equipments.contains(tokens.get(0)) || this.softwares.contains(tokens.get(0)) || this.manufacturers.contains(tokens.get(0))) {
 
                 int index = 1;
                 while (index < tokens.size() - 1) {

@@ -9,7 +9,8 @@ public enum SymbolType {
     DEFECT,
     INFORMATION,
     MODEL,
-    EQUIPMENT
+    EQUIPMENT,
+    MANUFACTURER
     
     
 }
