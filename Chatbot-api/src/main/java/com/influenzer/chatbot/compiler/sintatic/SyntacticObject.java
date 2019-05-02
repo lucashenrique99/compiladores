@@ -5,18 +5,15 @@ import com.influenzer.chatbot.compiler.model.SymbolObject;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class SyntacticObject {
     
     private MessageType type;
-    private Boolean isCorrect;
     private List<SymbolObject> symbols = new ArrayList<>();
     
 }

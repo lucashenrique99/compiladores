@@ -13,6 +13,10 @@ public enum MessageType {
     ASSIGNMENT_RULE_5,
     ASSIGNMENT_RULE_6,
     
-    NOT_RECOGNIZED
+    NOT_RECOGNIZED;
     
+    @Override
+    public String toString() {
+        return name().replaceAll("_", " ");
+    }
 }

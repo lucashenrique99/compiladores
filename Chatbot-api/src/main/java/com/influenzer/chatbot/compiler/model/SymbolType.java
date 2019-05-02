@@ -7,7 +7,8 @@ public enum SymbolType {
     
     SERVICE,
     DEFECT,
-    PERSONAL_INFORMATION,
+    INFORMATION,
+    MODEL,
     EQUIPMENT
     
     

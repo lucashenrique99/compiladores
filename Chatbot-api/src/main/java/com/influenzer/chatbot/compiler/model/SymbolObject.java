@@ -20,8 +20,9 @@ public class SymbolObject {
     private String name;
     private String value;
 
-    public SymbolObject(SymbolType type, String name) {
+    public SymbolObject(SymbolType type, String name, String value) {
         this.type = type;
+        this.value = value;
         this.name = name;
         this.id = UUID.randomUUID();
     }

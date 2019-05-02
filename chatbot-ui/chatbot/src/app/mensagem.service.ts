@@ -8,7 +8,6 @@ import { environment } from 'src/environments/environment';
 export class MensagemService {
 
   url: string;
-  key: string;
 
   constructor(
     private http: HttpClient
@@ -17,14 +16,14 @@ export class MensagemService {
   }
 
   iniciarConexao(){
-    return this.http.get<string>(`${this.url}/mensagens/key`).subscribe( key => this.key = key);
+    return this.http.get<string>(`${this.url}/mensagens/key`, {responseType: 'text' as 'json'}).subscribe( key => sessionStorage.setItem('key', key));
   }
 
   enviarMensagem(mensagem){
-    return this.http.post<any>(`${this.url}/mensagens?key=${this.key}`, mensagem);
+    return this.http.post<any>(`${this.url}/mensagens?key=${sessionStorage.getItem('key')}`, mensagem);
   }
 
   encerrarConexao(){
-    return this.http.get<string>(`${this.url}/mensagens/${this.key}`);
+    return this.http.get<string>(`${this.url}/mensagens/${sessionStorage.getItem('key')}`);
   }
 }
