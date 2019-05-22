@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 public class SyntacticObject {
     
     private MessageType type;
+    private List<String> tokens;
     private List<SymbolObject> symbols = new ArrayList<>();
     
 }
