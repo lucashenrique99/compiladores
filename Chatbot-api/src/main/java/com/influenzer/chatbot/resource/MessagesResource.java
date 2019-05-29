@@ -2,6 +2,8 @@ package com.influenzer.chatbot.resource;
 
 import com.influenzer.chatbot.compiler.Compiler;
 import com.influenzer.chatbot.compiler.model.Message;
+import com.influenzer.chatbot.compiler.translator.InvertFileGenerator;
+import com.influenzer.chatbot.compiler.translator.InvertFileResult;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -21,11 +23,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class MessagesResource {
 
     private final Map<String, Compiler> map = new HashMap<>();
+    private final InvertFileResult invertFile;
+    
+    public MessagesResource(){
+        InvertFileGenerator generator = new InvertFileGenerator();
+        this.invertFile = generator.getInvertFile();
+    }
     
     @GetMapping("/key")
     public ResponseEntity<String> getAcessKey(){
         String key = UUID.randomUUID().toString();
-        map.put(key, new Compiler());
+        map.put(key, new Compiler(this.invertFile));
         return ResponseEntity.ok(key);
     }
 

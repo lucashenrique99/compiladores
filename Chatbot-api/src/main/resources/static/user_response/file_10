@@ -1,0 +1,57 @@
+Windows 7 não inicia? Saiba o que fazer
+Davi de Limapor DAVI DE LIMA
+Para o TechTudo
+FACEBOOK
+TWITTER
+ 
+Quando o Windows 7 não inicia, é bem provável que haja arquivos corrompidos ou ausentes que são imprescindíveis para manter o sistema estável. No entanto, o Windows 7 possui ferramentas bastante úteis para corrigir esses problemas como a Correção de Inicialização, que resolver automaticamente os problemas que impedem o Windows de iniciar, a Restauração do Sistema, que restaura o Windows a um ponto anterior no tempo, a Recuperação da Imagem do Sistema, que recupera o computador usando uma imagem de sistema criada anteriormente e a Recuperação, que restaura o Windows para o estado instalado de fábrica.
+
+Como configurar uma VPN no Windows 7
+
+Veja, a seguir, como resolver o problema: 
+
+windows7
+Aprenda a resolver resolver problemas com inicialização do Windows 7 (Reprodução/Davi de Lima)
+1.Corrigir problemas de inicialização
+
+Passo 1. Ao iniciar o PC, pressione repetidas vezes a tecla F8. Assim, a tela de Opções de Inicialização Avançadas será exibida. Selecione a opção Reparar Computador utilizando as teclas de direção e pressione Enter;
+
+windows7-1
+Pressione F8 para abrir a tela de Opções de Inicialização Avançadas no Windows 7(Reprodução/Davi de Lima)
+Passo 2. Clique em Avançar na janela seguinte;
+
+windows7-3
+Clique em avançar na tela de Recuperação do Sistema (Reprodução/Davi de Lima)
+Passo 3. Na tela de logon, insira o nome de usuário e a senha;
+
+windows7-4
+Insira seu nome de usuário e senha no Windows 7(Reprodução/Davi de Lima)
+Passo 4. A janela seguinte apresentará uma lista de ferramentas, escolha a opção Correção de Inicialização.
+
+windows7-2
+Escolha a opção de Correção de Inicialização no Windows 7 (Reprodução/Davi de Lima)
+Também é possível iniciar as Opções de Recuperação do Sistema a partir do disco de instalação ou de recuperação do Windows 7, que é criado no Painel de Controle.
+
+Download grátis do app do TechTudo: receba dicas e notícias de tecnologia no Android ou iPhone
+
+2.Restaurar sistema
+
+Quando o Windows 7 está instável ou apresentando lentidão, é possível utilizar a Restauração do Sistema. O Windows 7 cria automaticamente um ponto de restauração, sempre que é feita uma grande alteração no computador. 
+
+O ponto de restauração é uma referência que permite que o sistema seja restaurado a um estado anterior sem que haja perda de dados. A Restauração do Sistema permite que o usuário selecione um dos pontos de restauração e restaurar o estado do sistema para quando o ponto foi criado. 
+
+saiba mais
+Tudo que os usuários de Windows 7 precisam saber sobre o Windows 10
+Todas as versões do Windows 7: Ultimate, Starter, Home, Professional e Enterprise
+Como atualizar Windows 7 para Windows 8.1
+3.Recuperar Imagem do Sistema
+
+A Recuperação da Imagem do Sistema pode restaurar o estado anterior do computador carregando uma imagem do sistema previamente criada. Esta função também pode ser criada de forma automática com a função Backup do Windows 7. Contudo, é preciso tomar cuidado, pois a Recuperação da Imagem do Sistema limpa todo o disco onde está instalado o Windows 7, fazendo com que todos os dados sejam perdidos.
+
+Qual é o melhor Windows de todos os tempos? Comente no Fórum do TechTudo.
+
+4.Recuperar ou reinstalar o Windows 7
+
+A Recuperação restaura o computador para o estado instalado de fábrica. Mas este método só fica disponível para computadores com o Windows 7 pré instalado.
+
+Para reinstalar, basta inserir o disco do Windows 7, reiniciar o computador e seguir as etapas de instalação. É importante fazer backup dos arquivos antes de executar este procedimento.

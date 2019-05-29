@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 
@@ -96,6 +97,7 @@ public class SyntacticAnalyzer {
                 cleanTokensList(tokens, index - 1);
 
                 object.setType(MessageType.QUESTION_RULE_1);
+                object.setSymbols(tokens.stream().map( token -> new SymbolObject(token)).collect(Collectors.toList()));
 
                 return Optional.of(object);
 
@@ -139,6 +141,7 @@ public class SyntacticAnalyzer {
 
                 cleanTokensList(tokens, index);
                 object.setType(MessageType.QUESTION_RULE_2);
+                object.setSymbols(tokens.stream().map( token -> new SymbolObject(token)).collect(Collectors.toList()));
                 return Optional.of(object);
 
             } else if (tokens.get(0).equalsIgnoreCase("precis")) {
@@ -181,6 +184,7 @@ public class SyntacticAnalyzer {
 
                 cleanTokensList(tokens, index);
                 object.setType(MessageType.QUESTION_RULE_3);
+                object.setSymbols(tokens.stream().map( token -> new SymbolObject(token)).collect(Collectors.toList()));
                 return Optional.of(object);
 
             } else if (tokens.get(0).equalsIgnoreCase("esta")) {
@@ -269,7 +273,7 @@ public class SyntacticAnalyzer {
 
                     if (tokens.get(index).equalsIgnoreCase("nao") && this.bugTypes.contains(tokens.get(index + 1))) {
 
-                        cleanTokensList(tokens, index);
+                        cleanTokensList(tokens, index + 1);
                         object.setType(MessageType.ASSIGNMENT_RULE_5);
                         object.getSymbols().add(new SymbolObject(SymbolType.DEFECT, tokens.get(0), tokens.get(index + 1)));
                         return Optional.of(object);
