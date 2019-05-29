@@ -36,9 +36,11 @@ public class Optimizer {
         DICTIONARY.put(wordCompression("win"), wordCompression("windows"));
         DICTIONARY.put(wordCompression("window"), wordCompression("windows"));
 
-        DICTIONARY.put(wordCompression("mac"), wordCompression("macos"));
-        DICTIONARY.put(wordCompression("mec"), wordCompression("macos"));
-        DICTIONARY.put(wordCompression("maco"), wordCompression("macos"));
+        DICTIONARY.put(wordCompression("mac"), "macos");
+        DICTIONARY.put(wordCompression("mec"), "macos");
+        DICTIONARY.put(wordCompression("maco"), "macos");
+        
+        DICTIONARY.put(wordCompression("lenov"), "lenovo");
 
         DICTIONARY.put(wordCompression("debian"), wordCompression("linux"));
         DICTIONARY.put(wordCompression("fedora"), wordCompression("linux"));

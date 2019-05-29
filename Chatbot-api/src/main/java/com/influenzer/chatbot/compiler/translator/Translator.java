@@ -1,9 +1,6 @@
 package com.influenzer.chatbot.compiler.translator;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.util.Set;
 import java.util.logging.Level;

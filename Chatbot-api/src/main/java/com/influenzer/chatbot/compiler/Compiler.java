@@ -59,7 +59,15 @@ public class Compiler {
             return Optional.empty();
         }
 
-        this.symbolsTable.addAll(synOptional.get().getSymbols());
+        synOptional.get().getSymbols().forEach(symbol -> {
+            if (this.symbolsTable.contains(symbol)) {
+                this.symbolsTable.set(this.symbolsTable.indexOf(symbol), symbol);
+                
+            } else {
+                this.symbolsTable.add(symbol);
+            }
+        });
+
         Collections.sort(symbolsTable, (s1, s2) -> s1.getName().compareTo(s2.getName()));
 
         String answer = this.translator.translate(
@@ -69,8 +77,8 @@ public class Compiler {
                                 .map(symbol -> (symbol.getValue() != null) ? symbol.getValue().toLowerCase() : null),
                         this.symbolsTable
                                 .stream()
-                                .map(symbol -> (symbol.getName()!= null) ? symbol.getName().toLowerCase() : null))
-                        .filter( value -> value != null)
+                                .map(symbol -> (symbol.getName() != null) ? symbol.getName().toLowerCase() : null))
+                        .filter(value -> value != null)
                         .collect(Collectors.toSet()));
 //        message.setResponse("Correct. " + synOptional.get().getType());
         message.setResponse(answer);

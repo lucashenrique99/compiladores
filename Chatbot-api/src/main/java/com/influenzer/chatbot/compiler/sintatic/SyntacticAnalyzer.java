@@ -229,7 +229,7 @@ public class SyntacticAnalyzer {
                         return Optional.of(object);
                     }
 
-                    if (this.equipments.contains(tokens.get(0)) || this.softwares.contains(tokens.get(0)) || this.manufacturers.contains(tokens.get(0))
+                    if ((this.equipments.contains(tokens.get(0)) || this.softwares.contains(tokens.get(0)) || this.manufacturers.contains(tokens.get(0)))
                             && (this.models.contains(tokens.get(index)))) {
                         cleanTokensList(tokens, index);
                         object.setType(MessageType.ASSIGNMENT_RULE_1);
@@ -237,7 +237,7 @@ public class SyntacticAnalyzer {
                         return Optional.of(object);
                     }
 
-                    if (this.equipments.contains(tokens.get(0)) || this.softwares.contains(tokens.get(0))
+                    if ((this.equipments.contains(tokens.get(0)) || this.softwares.contains(tokens.get(0)))
                             && this.manufacturers.contains(tokens.get(index))) {
                         cleanTokensList(tokens, index);
                         object.setType(MessageType.ASSIGNMENT_RULE_1);

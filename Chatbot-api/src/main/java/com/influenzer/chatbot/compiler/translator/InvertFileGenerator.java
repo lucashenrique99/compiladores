@@ -18,9 +18,9 @@ public class InvertFileGenerator {
             try {
                 String name = "file_" + i;
 
-                Map<String, Long> tfFile = reader.readFile(name);
+                Map<String, Double> tfFile = reader.readFile(name);
                 result.getFiles().put(name, tfFile);
-                result.setIdf(getIDF(result.getFiles().values()));
+                result.setDf(getDF(result.getFiles().values()));
 
             } catch (IOException e) { // if the project dont contains the file, just ignore it
 
@@ -30,7 +30,7 @@ public class InvertFileGenerator {
         return result;
     }
     
-    private Map<String, Long> getIDF(Collection<Map<String, Long>> collections){
+    private Map<String, Long> getDF(Collection<Map<String, Double>> collections){
         Map<String, Long> map = new HashMap<>();
         Set<String> possibleTerms = new HashSet<>();
         collections.forEach( item -> {

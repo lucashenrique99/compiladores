@@ -1,9 +1,12 @@
 package com.influenzer.chatbot.compiler.translator;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -11,19 +14,26 @@ import lombok.Data;
 @AllArgsConstructor
 public class InvertFileResult {
 
-    private Map<String, Map<String, Long>> files;
-    private Map<String, Long> idf;
+    private Map<String, Map<String, Double>> files;
+    private Map<String, Long> df;
 
     public InvertFileResult() {
         files = new HashMap<>();
-        idf = new HashMap<>();
+        df = new HashMap<>();
     }
 
     public String getBestAnswer(Set<String> words) {
-        ResultList result = new ResultList(null, Long.MIN_VALUE);
+        Result result = new Result(null, 0);
         Random r = new Random();
+        List<String> listWords = new ArrayList<>(words);
+        List<Double> queryArray = listWords
+                .stream()
+                .map((word) -> Math.log(12 / this.df.get(word)))
+                .collect(Collectors.toList());
+
         files.keySet().forEach(key -> {
-            Double value = getInvertFileValue(words, files.get(key)) ;
+            List<Double> fileArray = getInvertFileValue(listWords, files.get(key));
+            Double value = similarCalculator(fileArray, queryArray);
             if (value > result.value) {
                 result.value = value;
                 result.fileName = key;
@@ -41,20 +51,32 @@ public class InvertFileResult {
         return result.fileName;
     }
 
-    private Double getInvertFileValue(Set<String> words, Map<String, Long> wordsMapTF) {
+    private List<Double> getInvertFileValue(List<String> words, Map<String, Double> wordsMapTF) {
         final int numFiles = 12;
         return words
                 .stream()
-                .mapToDouble((word) -> wordsMapTF.getOrDefault(word, new Long(0)) * (Math.log( numFiles / this.idf.getOrDefault(word, new Long(1)))) )
-                .average().getAsDouble();
+                .map((word) -> wordsMapTF.getOrDefault(word, new Double(0)) * (Math.log(numFiles / this.df.getOrDefault(word, new Long(numFiles)))))
+                .collect(Collectors.toList());
     }
 
-    private class ResultList {
+    private double similarCalculator(List<Double> array1, List<Double> array2) {
+        double numerator = 0;
+        for (int i = 0; i < array1.size(); i++) {
+            numerator += array1.get(i) * array2.get(i);
+        }
+        double denominator
+                = Math.sqrt(array1.stream().mapToDouble((value) -> value * value).sum())
+                * Math.sqrt(array2.stream().mapToDouble((value) -> value * value).sum());
+
+        return (denominator == 0) ? 0 : numerator / denominator;
+    }
+
+    private class Result {
 
         String fileName;
         double value;
 
-        public ResultList(String fileName, double value) {
+        public Result(String fileName, double value) {
             this.fileName = fileName;
             this.value = value;
         }
