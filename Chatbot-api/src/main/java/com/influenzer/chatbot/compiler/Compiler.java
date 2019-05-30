@@ -62,11 +62,15 @@ public class Compiler {
         synOptional.get().getSymbols().forEach(symbol -> {
             if (this.symbolsTable.contains(symbol)) {
                 this.symbolsTable.set(this.symbolsTable.indexOf(symbol), symbol);
-                
+
             } else {
                 this.symbolsTable.add(symbol);
             }
         });
+
+        // codigo inutil (teste de merge request
+        int f = 0;
+        f++;
 
         Collections.sort(symbolsTable, (s1, s2) -> s1.getName().compareTo(s2.getName()));
 
