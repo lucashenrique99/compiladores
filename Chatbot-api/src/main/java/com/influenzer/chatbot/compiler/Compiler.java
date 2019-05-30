@@ -41,7 +41,11 @@ public class Compiler {
         if (!synOptional.isPresent()) {
             return Optional.empty();
         }
-
+        
+        // codigo inutil (teste de merge request
+        int i = 0;
+        i++;
+        
         message.setResponse("Correct. " + synOptional.get().getType());
 
         this.symbolsTable.addAll(synOptional.get().getSymbols());
