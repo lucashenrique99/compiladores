@@ -67,21 +67,6 @@ public class Compiler {
                 this.symbolsTable.add(symbol);
             }
         });
-
-        message.setResponse("Correct. " + synOptional.get().getType());
-        
-        // codigo inutil (teste de merge pull request
-        int f = 0;
-        f++;  
-        // codigo inutil (teste de merge pull request
-        int i = 0;
-        i++;
-        
-        // codigo inutil ( teste merge request
-		int j = 0;
-        j--;
-		int k = 0;
-        k--;
         
         Collections.sort(symbolsTable, (s1, s2) -> s1.getName().compareTo(s2.getName()));
 
