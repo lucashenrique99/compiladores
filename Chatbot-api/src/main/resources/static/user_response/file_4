@@ -1,0 +1,56 @@
+Notebook não liga? Veja possíveis causas e o que fazer para resolver
+Lista traz os problemas mais frequentes e dicas sobre como resolvê-los.
+Por Helito Bijora, para o TechTudo
+
+31/12/2017 08h01  Atualizado há 9 meses
+
+ 
+O notebook pode não ligar por diversos motivos. As causas vão desde de problemas básicos, como fonte de alimentação com defeito e erros de software, até HD ou tela queimados. Seja qual for o seu caso, o TechTudo pode ajudá-lo a isolar a falha e encontrar uma solução.
+
+Se o seu laptop não quer ligar, confira as possíveis causas para o problema, o que fazer e, em alguns casos, como resolver. A maioria dos procedimentos pode ser realizada por você mesmo, em sua casa, sem nenhum risco. Entretanto, é importante ressaltar que alguns testes e verificações requerem conhecimento técnico e ferramentas adequadas.
+
+
+Bateria do notebook acaba rápido? Veja como identificar o problema
+
+Notebook: dicas para resolver os principais problemas do teclado
+
+Quer comprar celular, TV e outros produtos com desconto? Conheça o Compare TechTudo
+
+Energia
+Antes de mais nada, é importante verificar o básico: a tomada e a fonte do notebook. Teste o seu computador em outra tomada e verifique se os plugues estão bem encaixados, tanto a conexão com o notebook quanto o fio da fonte. Lembre-se, ainda, de verificar se a luz de indicação da fonte está acendendo. Caso contrário, o problema pode ser na fonte de alimentação.
+
+Verifique se o LED da fonte acende ou não — Foto: Paulo Alves/TechTudo Verifique se o LED da fonte acende ou não — Foto: Paulo Alves/TechTudo
+Verifique se o LED da fonte acende ou não — Foto: Paulo Alves/TechTudo
+
+
+Se você desconfia que a fonte de seu notebook está com problemas, o ideal é ter outra fonte para realizar testes e confirmar ou descartar esta hipótese. Neste caso, você pode pegar emprestado a fonte de algum amigo que possui um computador da mesma marca – geralmente, as fabricantes usam a mesma fonte para vários modelos. Entretanto, é importante verificar se as especificações de entrada e saída e tensão são as mesmas. Você pode conferir isso na etiqueta que vem colada na fonte.
+
+Tela
+Outro problema que pode fazer com que o seu notebook não ligue é a tela. Na verdade, neste caso, o seu computador está ligando e funcionando normalmente. Entretanto, como a tela não mostra nenhuma imagem, o usuário pode achar que o notebook não está ligando. Para descobrir se este é o caso, observe se as ventoinhas do computador.
+
+Se o cooler do processador estiver funcionando ou o notebook emitir algum som de inicialização e a tela permanecer apagada, este pode ser o problema. Felizmente, é muito simples verificar isso: basta ligar o seu notebook a um monitor externo. Você vai precisar de um cabo VGA ou HDMI, dependendo das conexões do seu PC.
+
+Conecte o seu notebook a um monitor externo — Foto: João Kurtz/TechTudo Conecte o seu notebook a um monitor externo — Foto: João Kurtz/TechTudo
+Conecte o seu notebook a um monitor externo — Foto: João Kurtz/TechTudo
+
+Caso o computador inicie normalmente usando uma tela externa, o problema está no display do seu notebook. Pode ser que a tela esteja com mal contato ou o cabo flat tenha quebrado. Infelizmente, nestas situações, você precisará abrir o notebook para verificar. Faça isso apenas se tiver conhecimento técnico ou procure ajuda profissional.
+
+
+Falha de boot do Windows
+Um problema bastante comum quando o computador liga mas não inicia está relacionado a falhas de boot (inicialização) do Windows. Isso pode acontecer após desligamentos inesperados, como quedas de energia, que tendem a corromper arquivos importantes do sistema.
+
+Corrigindo falhas de boot do Windows 10 — Foto: Reprodução/Adriano Hamaguchi Corrigindo falhas de boot do Windows 10 — Foto: Reprodução/Adriano Hamaguchi
+Corrigindo falhas de boot do Windows 10 — Foto: Reprodução/Adriano Hamaguchi
+
+A solução, neste caso, é usar as próprias ferramentas do sistema operacional para verificar e corrigir a falha. Para isso, basta inserir o disco de instalação do sistema e clicar em "Reparar o computador". Por fim, clique em "Correção de Inicialização". Agora é só aguardar até que o Windows faça as verificações e correções necessárias.
+
+Disco
+O HD do seu computador pode estar com problemas. Se este for o caso, o notebook não conseguirá fazer a leitura dos arquivos e apresentará um erro relacionado ao boot do sistema operacional. Você verá uma tela preta com escritas em inglês – geralmente "no bootable device". A falha também acontece caso o disco tenha sido formatado e nenhum sistema esteja instalado.
+
+O HD do seu notebook pode estar com defeito — Foto: Seagater O HD do seu notebook pode estar com defeito — Foto: Seagater
+O HD do seu notebook pode estar com defeito — Foto: Seagater
+
+Para verificar se o seu HD está com defeito, você pode testá-lo em outro PC. Neste caso, infelizmente, será necessário desmontar o seu notebook para extrair o disco. Reinstalar o sistema operacional também pode resolver temporariamente o problema. Entretanto, caso o HD esteja no fim da sua vida útil, a falha poderá ocorrer novamente.
+
+BIOS
+Alterações acidentais na BIOS podem fazer com que o computador não ligue. A ordem do boot pode ter sido alterada e, deste modo, o sistema não poderá ser iniciado. Você verá uma tela preta com escritas em inglês idênticas ao problema anterior. Felizmente, neste caso, a solução é bem simples: basta restaurar as configurações de fábrica da BIOS.

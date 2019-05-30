@@ -1,5 +1,6 @@
 package com.influenzer.chatbot.compiler.lexicon;
 
+import com.influenzer.chatbot.compiler.optimizer.Optimizer;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -47,13 +48,14 @@ public class LexiconAnalyzer {
     }
 
     private void lexemesGenerate(List<String> list) {
-        for (int i = 0; i < list.size(); i++) { // comprimindo a word
-            String word = list.get(i);
-            this.stemmer.setCurrent(word);
-            this.stemmer.stem();
-            list.set(i, this.stemmer.getCurrent());
-
-        }
+//        for (int i = 0; i < list.size(); i++) { // comprimindo a word
+//            String word = list.get(i);
+//            this.stemmer.setCurrent(word);
+//            this.stemmer.stem();
+//            list.set(i, this.stemmer.getCurrent());
+//
+//        }
+        Optimizer.lexiconOptimizer(list);
     }
 
     private List<String> symbolsTableGenerate(List<String> list) {

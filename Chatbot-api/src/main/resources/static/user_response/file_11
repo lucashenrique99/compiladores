@@ -1,0 +1,25 @@
+Se o Mac não ligar nem inicializar
+Se o Mac não ligar ou não concluir a inicialização, tente estas soluções.
+
+Pressione o botão liga/desliga  do Mac e verifique se há sinais de alimentação, tais como:
+
+Sons, como os de uma ventoinha, disco rígido ou outro som de inicialização
+Luzes, como as de um teclado retroiluminado, tecla Caps Lock ouindicador luminoso de repouso
+Se não houver sinais de alimentação no Mac, verifique se ele está recebendo alimentação:
+
+Veja se o cabo de alimentação não está danificado e se está bem conectado ao Mac e a uma tomada que funciona. Se não souber se a tomada está funcionando, teste-a com um abajur ou outro dispositivo. 
+Se você estiver usando um notebook Mac, verifique se está usando o cabo de alimentação e adaptador corretos e deixe-os conectados até que a bateria tenha carga suficiente para o notebook ser usado. Saiba como solucionar problemas em adaptadores de alimentação MagSafe ou adaptadores de alimentação USB-C.
+Depois, tente estas soluções, independentemente de o Mac apresentar sinais de alimentação ou não:
+
+Mantenha pressionado o botão liga/desliga por 10 segundos e, em seguida, pressione-o novamente. Se isso não ajudar, tente novamente após desconectar acessórios do Mac, incluindo impressoras, unidades, hubs USB e dispositivos móveis. (Pode haver um problema em um ou mais desses dispositivos ou em seus cabos.)
+Se nada aparecer na tela, verifique se o brilho dela está alto. Os notebooks Mac incluem uma tecla para aumentar o brilho da tela  no teclado integrado. Se você estiver usando uma tela externa, verifique se ela está ligada e se não há outros problemas nela.
+Redefina o Controlador de Gestão do Sistema (SMC).
+Se o Mac ligar, mas não concluir a inicialização, uma das soluções abaixo poderá ajudar. Se precisar desligar o Mac primeiro, mantenha pressionado o botão liga/desliga por 10 segundos. 
+
+Se durante a inicialização o Mac exibir um ponto de interrogação, um círculo atravessado por uma linha ou qualquer outra tela que não seja a mesa, saiba mais sobre as telas exibidas pelo Mac quando ele é inicializado.
+Inicialize no modo de segurança.
+Redefina a NVRAM.
+Se o problema ocorrer ao iniciar sessão com sua conta de usuário teste o problema usando outra conta de usuário, se disponível.
+Inicialize da Recuperação do macOS. Caso consiga inicializar apenas pela Recuperação do macOS, isso significa que o sistema operacional no disco de inicialização talvez não possa mais ser usado. Nesse caso, reinstale o macOS ou restaure-o de um backup. 
+Se você tiver instalado uma memória ou um disco rígido (ou SSD) recentemente, verifique se o item é compatível e se foi instalado corretamente. Se possível, remova essas peças do computador e teste-o com a memória ou o disco rígido originais.
+Se o Mac ainda não ligar nem inicializar ou se você não conseguir reinstalar o macOS ou restaurá-lo de um backup, entre em contato com o Suporte da Apple, uma Apple Store ou um Centro de Serviço Autorizado Apple (AASP). Enquanto isso, se o Mac não concluir a inicialização e você tiver outro disco de inicialização, você poderá conectá-lo ao Mac e inicializar desse disco em vez do disco de inicialização atual.

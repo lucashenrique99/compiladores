@@ -1,0 +1,15 @@
+Como saber se meu computador é 32-bit ou 64-bit Windows
+Sintoma Os termos 32 bits e 64 bits referem-se à forma como o processador de um computador (também chamado de CPU) lida com informações. A versão de 64 bits do Windows lida com grandes quantidades de memória de acesso aleatório (RAM) de forma mais eficaz do que um sistema de 32 bits. Marcas Afetadas O sintoma acima está associado, mas não limitado a, aos seguintes sistemas: Todos os Desktop e Laptops Sistema operacional Windows 7, 8, 10 Solução Windows 7 or Vista
+Abra o Sistema clicando no botão Iniciar. Na imagem do botão Iniciar, clique com o botão direito do mouse em Computador e, em seguida, clique em Propriedades
+Em Sistema, você poderá visualizar o tipo de sistema.
+Windows 8 and Windows 10 Método 1: Veja a janela de Sistema em Painel de controle.
+Deslize da borda direita da tela e toque em Pesquisar. Ou, se você estiver usando um mouse, aponte para o canto inferior direito da tela e clique em Pesquisar.
+Digite sistema na caixa de pesquisa e, em seguida, toque ou clique em Configurações.
+Toque ou clique em Sistema
+Se você estiver executando uma versão de 64 bits do Windows 8, o Sistema operacional de 64 bits é exibido no campo Tipo de sistema sob o cabeçalho.. Se você estiver executando uma versão de 32 bits do Windows 8, o Sistema operacional de 32 bits é exibido no campo Tipo de sistema sob o cabeçalho.
+Método 2: Veja a janela Informação do sistema
+Deslize da borda direita da tela e toque em Pesquisar. Ou, se você estiver usando um mouse, aponte para o canto inferior direito da tela e clique em Pesquisar.
+Na caixa de pesquisa, digite informações do sistema
+Toque ou clique em Sistema, toque ou clique em Informações do sistema e, em seguida, clique em Resumo do sistema.
+Se você estiver executando uma versão de 64 bits do Windows 8, o PC baseado em x64 é exibido no campo Tipo de sistema sob o cabeçalho do item.
+          Se você estiver executando uma versão de 32 bits do Windows 8, o PC baseado em x86 é exibido no campo Tipo de sistema sob o cabeçalho do item.
