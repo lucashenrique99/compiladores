@@ -78,8 +78,10 @@ public class Compiler {
         i++;
         
         // codigo inutil ( teste merge request
-        int j = 0;
+		int j = 0;
         j--;
+		int k = 0;
+        k--;
         
         Collections.sort(symbolsTable, (s1, s2) -> s1.getName().compareTo(s2.getName()));
 
