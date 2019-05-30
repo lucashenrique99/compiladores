@@ -76,6 +76,11 @@ public class Compiler {
         // codigo inutil (teste de merge request
         int i = 0;
         i++;
+        
+        // codigo inutil ( teste merge request
+        int k = 0;
+        k--;
+        
         Collections.sort(symbolsTable, (s1, s2) -> s1.getName().compareTo(s2.getName()));
 
         String answer = this.translator.translate(
