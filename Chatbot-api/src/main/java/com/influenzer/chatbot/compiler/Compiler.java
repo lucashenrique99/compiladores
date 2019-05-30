@@ -58,7 +58,7 @@ public class Compiler {
         if (!synOptional.isPresent()) {
             return Optional.empty();
         }
-
+        
         synOptional.get().getSymbols().forEach(symbol -> {
             if (this.symbolsTable.contains(symbol)) {
                 this.symbolsTable.set(this.symbolsTable.indexOf(symbol), symbol);
@@ -68,10 +68,14 @@ public class Compiler {
             }
         });
 
+        message.setResponse("Correct. " + synOptional.get().getType());
+        
         // codigo inutil (teste de merge request
         int f = 0;
-        f++;
-
+        f++;  
+        // codigo inutil (teste de merge request
+        int i = 0;
+        i++;
         Collections.sort(symbolsTable, (s1, s2) -> s1.getName().compareTo(s2.getName()));
 
         String answer = this.translator.translate(
