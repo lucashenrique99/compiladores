@@ -25,6 +25,7 @@ Attr ::= Sim
 Attr ::= Não
 Attr ::= <substantivo> <defeito>
 Attr ::= está com <tipo-defeito>
+Attr ::= Obrigado | Endendi
 
 <substantivo> ::= <equipamento> | <software> | <fabricante>
 <expressao> ::= <servico> <equipamento> | <servico> <software> | <equipamento> <defeito>
@@ -53,7 +54,8 @@ public class SyntacticAnalyzer {
     private final List<String> bugTypes = Arrays.asList("lig", "funcion", "inicializ", "acend", "execut", "problem");
     private final List<String> models = Arrays.asList("branc", "pret", "cinz", "vermelh", "verd", "azul", "windows", "macos", "linux", "ubuntu");
     private final List<String> informationCategory = Arrays.asList("cpf", "cnpj", "pedido");
-    private final List<String> manufacturers = Arrays.asList("dell", "apple", "microsoft", "lenovo", "lg", "google");
+    private final List<String> manufacturers = Arrays.asList("dell", "apple", "microsoft", "lenovo", "lg", "google", "hp");
+    private final List<String> finalizers = Arrays.asList("entend", "obrig");
 
     public Optional<SyntacticObject> start(List<String> tokens) throws SyntaticException {
         if (tokens == null || tokens.isEmpty()) {
@@ -63,6 +65,10 @@ public class SyntacticAnalyzer {
         SyntacticObject object = new SyntacticObject();
 
         while (!tokens.isEmpty()) {
+            
+            if(finalizers.contains(tokens.get(0))){
+                throw new SyntaticException("Tudo bem. As ordens! :)", MessageType.ASSIGNMENT_RULE_7);
+            }
 
             // todos os marcadores iniciais devem estar de acordo com as respectivas regras
             if (tokens.get(0).equalsIgnoreCase("com")) { // question - rule 1
@@ -73,7 +79,7 @@ public class SyntacticAnalyzer {
                 }
 
                 if (index >= (tokens.size())) {
-                    throw new SyntaticException("Serviço esperado", MessageType.QUESTION_RULE_1);
+                    throw new SyntaticException("Não entendi. Qual serviço desejado?", MessageType.QUESTION_RULE_1);
                 }
 
                 index++; // passa para o proximo token
@@ -82,7 +88,7 @@ public class SyntacticAnalyzer {
                 }
 
                 if ((tokens.size()) <= index) {
-                    throw new SyntaticException("Equipamento ou software esperado", MessageType.QUESTION_RULE_1);
+                    throw new SyntaticException("Não entendi. Qual é o equipamento ou software desejado?", MessageType.QUESTION_RULE_1);
                 }
 
                 index++; // passa para o proximo token
@@ -90,7 +96,7 @@ public class SyntacticAnalyzer {
                     tokens.remove(index);
                 }
                 if (index >= (tokens.size())) {
-                    throw new SyntaticException("Ponto de interrogação esperado", MessageType.QUESTION_RULE_1);
+                    throw new SyntaticException("Me desculpe, não consegui entender sua solicitação.", MessageType.QUESTION_RULE_1);
                 }
 
                 // index neste momento sera o caractere ?
@@ -109,7 +115,7 @@ public class SyntacticAnalyzer {
                 }
 
                 if ((tokens.size()) <= index) {
-                    throw new SyntaticException("Serviço ou equipamento esperado", MessageType.QUESTION_RULE_2);
+                    throw new SyntaticException("Não entendi. Qual é o equipamento ou serviço desejado?", MessageType.QUESTION_RULE_2);
                 }
                 boolean isServico = this.services.contains(tokens.get(index));
 
@@ -121,7 +127,7 @@ public class SyntacticAnalyzer {
                 }
 
                 if ((tokens.size()) <= index && isServico) {
-                    throw new SyntaticException("Software ou equipamento esperado", MessageType.QUESTION_RULE_2);
+                    throw new SyntaticException("Não entendi. Qual é o equipamento ou software desejado?", MessageType.QUESTION_RULE_2);
                 } else if (isServico) {
                     cleanTokensList(tokens, index);
                     object.setType(MessageType.QUESTION_RULE_2);
@@ -136,7 +142,7 @@ public class SyntacticAnalyzer {
                 }
 
                 if ((tokens.size() - 1) <= index) {
-                    throw new SyntaticException("Defeito esperado", MessageType.QUESTION_RULE_2);
+                    throw new SyntaticException("Qual é o defeito?", MessageType.QUESTION_RULE_2);
                 }
 
                 cleanTokensList(tokens, index);
@@ -152,7 +158,7 @@ public class SyntacticAnalyzer {
                 }
 
                 if ((tokens.size()) <= index) {
-                    throw new SyntaticException("Serviço ou equipamento esperado", MessageType.QUESTION_RULE_3);
+                    throw new SyntaticException("Não entendi. Qual é o equipamento ou serviço desejado?", MessageType.QUESTION_RULE_3);
                 }
                 boolean isServico = this.services.contains(tokens.get(index));
 
@@ -164,7 +170,7 @@ public class SyntacticAnalyzer {
                 }
 
                 if ((tokens.size()) <= index && isServico) {
-                    throw new SyntaticException("Software ou equipamento esperado", MessageType.QUESTION_RULE_3);
+                    throw new SyntaticException("Não entendi. Qual é o equipamento ou software desejado?", MessageType.QUESTION_RULE_3);
                 } else if (isServico) {
                     cleanTokensList(tokens, index);
                     object.setType(MessageType.QUESTION_RULE_3);
@@ -179,7 +185,7 @@ public class SyntacticAnalyzer {
                 }
 
                 if ((tokens.size() - 1) <= index) {
-                    throw new SyntaticException("Defeito esperado", MessageType.QUESTION_RULE_3);
+                    throw new SyntaticException("Qual é o defeito?", MessageType.QUESTION_RULE_3);
                 }
 
                 cleanTokensList(tokens, index);
@@ -195,7 +201,7 @@ public class SyntacticAnalyzer {
                 }
 
                 if ((tokens.size() - 1) <= index) {
-                    throw new SyntaticException("Defeito esperado", MessageType.ASSIGNMENT_RULE_6);
+                    throw new SyntaticException("Qual é o defeito?", MessageType.ASSIGNMENT_RULE_6);
                 }
 
                 cleanTokensList(tokens, index);
@@ -211,7 +217,7 @@ public class SyntacticAnalyzer {
                     && (this.equipments.contains(tokens.get(0)) || this.softwares.contains(tokens.get(0)) || this.manufacturers.contains(tokens.get(0)) || this.informationCategory.contains(tokens.get(0)))) { // assignment - rule 1
 
                 if (tokens.size() < 3) {
-                    throw new SyntaticException("Informação, equipamento, fabricante ou modelo esperado", MessageType.ASSIGNMENT_RULE_1);
+                    throw new SyntaticException("Não consegui te entender. Eu preciso que me informe uma informação, equipamento, fabricante ou modelo para continuarmos.", MessageType.ASSIGNMENT_RULE_1);
                 }
 
                 int index = 1;
@@ -248,7 +254,7 @@ public class SyntacticAnalyzer {
                     tokens.remove(index);
                 }
 
-                throw new SyntaticException("Informação ou modelo esperado", MessageType.ASSIGNMENT_RULE_1);
+                throw new SyntaticException("Qual a informação ou o modelo desejado?", MessageType.ASSIGNMENT_RULE_1);
             }
 
             if (isInformation(tokens) // information
@@ -282,14 +288,14 @@ public class SyntacticAnalyzer {
                     tokens.remove(index);
                 }
 
-                throw new SyntaticException("Defeito esperado", MessageType.ASSIGNMENT_RULE_5);
+                throw new SyntaticException("Qual é o defeito?", MessageType.ASSIGNMENT_RULE_5);
             }
 
             // nos casos onde os marcadores iniciais não foram encontrados, será feita uma nova tentativa de identificar possiveis erros
             if (tokens.get(0).equalsIgnoreCase("e")) {
 
                 if (tokens.size() == 1) {
-                    throw new SyntaticException("Equipamento ou software esperado", MessageType.ASSIGNMENT_RULE_1);
+                    throw new SyntaticException("Qual é o equipamento ou software desejado?", MessageType.ASSIGNMENT_RULE_1);
                 }
 
                 if (tokens.get(1).length() == 11 // cpf
@@ -297,12 +303,12 @@ public class SyntacticAnalyzer {
                         || tokens.get(1).contains("/") // data
                         || tokens.get(1).contains(".")
                         || this.models.contains(tokens.get(1))) {
-                    throw new SyntaticException("Equipamento ou software esperado", MessageType.ASSIGNMENT_RULE_1);
+                    throw new SyntaticException("Qual é o equipamento ou software desejado?", MessageType.ASSIGNMENT_RULE_1);
                 }
             }
 
             if (this.bugTypes.contains(tokens.get(0))) {
-                throw new SyntaticException("Equipamento ou software esperado", MessageType.ASSIGNMENT_RULE_5);
+                throw new SyntaticException("Qual é o equipamento ou software desejado?", MessageType.ASSIGNMENT_RULE_5);
             }
 
             // nenhum dos casos foi identificado, logo, testa se as menores regras
@@ -321,7 +327,7 @@ public class SyntacticAnalyzer {
             tokens.remove(0);
         }
 
-        throw new SyntaticException("Nenhuma regra foi reconhecida", MessageType.NOT_RECOGNIZED);
+        throw new SyntaticException("Me desculpe, não consegui te entender. Você poderia repetir mais uma vez, por favor?", MessageType.NOT_RECOGNIZED);
     }
 
     private void cleanTokensList(List<String> tokens, int finalIndex) {

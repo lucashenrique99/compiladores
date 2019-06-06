@@ -3,6 +3,7 @@ package com.influenzer.chatbot.compiler;
 import com.influenzer.chatbot.compiler.lexicon.LexiconAnalyzer;
 import com.influenzer.chatbot.compiler.lexicon.LexiconObject;
 import com.influenzer.chatbot.compiler.model.Message;
+import com.influenzer.chatbot.compiler.model.MessageType;
 import com.influenzer.chatbot.compiler.model.SymbolObject;
 import com.influenzer.chatbot.compiler.sintatic.SyntacticAnalyzer;
 import com.influenzer.chatbot.compiler.sintatic.SyntacticObject;
@@ -52,7 +53,11 @@ public class Compiler {
             synOptional = this.syntactic.start(lexOptional.get().getLexemes());
 
         } catch (SyntaticException ex) {
-            message.setResponse(ex.getType() + ": " + ex.getMessage());
+            if(ex.getType() == MessageType.ASSIGNMENT_RULE_7){
+                this.symbolsTable.clear();
+            }
+            
+            message.setResponse(ex.getMessage());
             return Optional.of(message);
         }
         if (!synOptional.isPresent()) {

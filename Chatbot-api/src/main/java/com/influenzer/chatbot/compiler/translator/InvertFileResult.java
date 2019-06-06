@@ -28,7 +28,7 @@ public class InvertFileResult {
         List<String> listWords = new ArrayList<>(words);
         List<Double> queryArray = listWords
                 .stream()
-                .map((word) -> Math.log(12 / this.df.get(word)))
+                .map((word) -> Math.log(12 / this.df.getOrDefault(word, new Long(12))))
                 .collect(Collectors.toList());
 
         files.keySet().forEach(key -> {

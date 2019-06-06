@@ -33,6 +33,8 @@ Attr ::= {substantivo} {defeito}
 	
 Attr ::= está com {tipo-defeito}
 
+Attr ::= Obrigado | Endendi
+
 {substantivo} ::= {equipamento} | {software} | {fabricante}
 	
 {expressao} ::= {servico} {equipamento} | {servico} {software} | {equipamento} {defeito}
