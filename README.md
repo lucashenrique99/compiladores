@@ -16,30 +16,44 @@ O projeto consiste em duas aplicações distintas:
 Gramática formal:
 
 Pgt ::= Como <servico> <software> ? | Como <servico> <equipamento> ?
+	
 Pgt ::= Gostaria <expressao>
+	
 Pgt ::= Preciso <expressao>
 
 Attr ::= <substantivo> é <modelo> | <substantivo> esta <modelo> | <categoria-informacao> é <informacao> | <equipamento> e <fabricante> | <software> e <fabricante>
+	
 Attr ::= <defeito>
+	
 Attr ::= Sim
+
 Attr ::= Não
+
 Attr ::= <substantivo> <defeito>
+	
 Attr ::= está com <tipo-defeito>
 
 <substantivo> ::= <equipamento> | <software> | <fabricante>
+	
 <expressao> ::= <servico> <equipamento> | <servico> <software> | <equipamento> <defeito>
+	
 <adjetivo> ::= <defeito> | <informacao>
 
 <servico> ::= Consertar | Instalar | Saber | Descobrir | Verificar
 
 <defeito> :: não <tipo-defeito> 
+	
 <tipo-defeito> ::= Liga | Funciona | Inicializa | Acende | Executa | PROBLEMA
 
 <categoria-informacao> ::= cpf | cnpj | pedido
+	
 <informacao> ::= CPF | CNPJ | DATA COMPRA
 
 <fabricante> ::= DELL | APPLE | MICROSOFT | LENOVO | LG | GOOGLE
+	
 <software> ::= DRIVER | PROGRAMA | WINDOWS | MACOS | LINUX | UBUNTU
+	
 <modelo> ::= BRANCO | PRETO | CINZA | VERMELHO | NUMERO | WINDOWS | MACOS | LINUX | UBUNTU
+	
 <equipamento> ::= COMPUTADOR | NOTEBOOK | CELULAR | IMPRESSORA | MOUSE | MONITOR | TELA
  
