@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+
+import com.influenzer.chatbot.service.MessageService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,24 +25,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/mensagens")
 public class MessagesResource {
 
-    private final Map<String, Compiler> map = new HashMap<>();
-    private final InvertFileResult invertFile;
-    
-    public MessagesResource(){
-        InvertFileGenerator generator = new InvertFileGenerator();
-        this.invertFile = generator.getInvertFile();
-    }
-    
+    @Autowired
+    private MessageService messageService;
+
     @GetMapping("/key")
-    public ResponseEntity<String> getAcessKey(){
-        String key = UUID.randomUUID().toString();
-        map.put(key, new Compiler(this.invertFile));
+    public ResponseEntity<String> getAccessKey(){
+        String key = this.messageService.getNewAccessKey();
         return ResponseEntity.ok(key);
     }
 
     @PostMapping
-    public ResponseEntity<Message> reciveMessages(@RequestBody String message, @RequestParam String key) {
-        Compiler compiler = this.map.get(key);
+    public ResponseEntity<Message> receiveMessages(@RequestBody String message, @RequestParam String key) {
+        Compiler compiler = this.messageService.getCompiler(key);
         if(compiler == null){
             return ResponseEntity.notFound().build();
         }
@@ -51,7 +48,7 @@ public class MessagesResource {
     
     @DeleteMapping("/{key}")
     public ResponseEntity finishConnection(@PathVariable String key){
-        this.map.remove(key);
+        this.messageService.removeCompiler(key);
         return ResponseEntity.noContent().build();
     }
 

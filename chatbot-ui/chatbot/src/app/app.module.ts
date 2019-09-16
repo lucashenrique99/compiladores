@@ -14,10 +14,15 @@ import {InputTextModule} from 'primeng/inputtext';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
 import { FormsModule } from '@angular/forms';
 import { MensagemService } from './mensagem.service';
+import { ChatViewComponent } from './chat-view/chat-view.component';
+import { InjectableRxStompConfig, RxStompService, rxStompServiceFactory } from '@stomp/ng2-stompjs';
+import { myRxStompConfig } from './stompjs-config';
+import { MensagemWebsocketService } from './mensagem-websocket.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ChatViewComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,17 @@ import { MensagemService } from './mensagem.service';
     
   ],
   providers: [
-    MensagemService
+    {
+      provide: InjectableRxStompConfig,
+      useValue: myRxStompConfig
+    },
+    {
+      provide: RxStompService,
+      useFactory: rxStompServiceFactory,
+      deps: [InjectableRxStompConfig]
+    },
+    MensagemService,
+    MensagemWebsocketService
   ],
   bootstrap: [AppComponent]
 })
