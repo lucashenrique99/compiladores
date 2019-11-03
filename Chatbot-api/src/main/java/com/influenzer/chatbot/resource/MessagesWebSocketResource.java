@@ -5,13 +5,10 @@ import com.influenzer.chatbot.compiler.model.Message;
 import com.influenzer.chatbot.resource.request.MessageWebSocket;
 import com.influenzer.chatbot.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.messaging.simp.annotation.SendToUser;
-import org.springframework.messaging.simp.annotation.SubscribeMapping;
 import org.springframework.stereotype.Controller;
 
 import java.util.Optional;
@@ -34,8 +31,6 @@ public class MessagesWebSocketResource {
         }
 
         Optional<Message> msg = compiler.compile(new Message(request.getMessage()));
-        System.out.println(key);
-        System.out.println(msg.get().getResponse());
         return msg.get();
     }
 
